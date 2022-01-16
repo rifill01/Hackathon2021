@@ -12,7 +12,6 @@ class myEvent():
         self.timeStart = timeStart
         self.timeEnd = timeEnd
 
-day = []
 
 today = date.today()
 
