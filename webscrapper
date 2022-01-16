@@ -1,0 +1,70 @@
+## requests library needs to be installed
+## BeautifulSoup library needs to be installed
+
+import requests
+from bs4 import BeautifulSoup
+
+URL = "http://www.calendar.ubc.ca/vancouver/index.cfm?page=deadlines"
+page = requests.get(URL)
+
+soup = BeautifulSoup(page.content, "html.parser")
+
+results = soup.find(id="UbcMainContent")
+dates = results.find_all("td");
+
+January = []
+February = []
+March = []
+April = []
+May = []
+June = []
+July = []
+August = []
+September = []
+October = []
+November = []
+December = []
+
+for dates in dates:
+    Months = dates.get_text()
+    if "After" in Months: #Can remove dates with After for now
+        break
+    elif "January" in Months:
+        January.append(Months)
+    elif "February" in Months:
+        February.append(Months)
+    elif "March" in Months:
+        March.append(Months)         
+    elif "April" in Months:
+        April.append(Months)
+    elif "May" in Months:
+        May.append(Months)
+    elif "June" in Months:
+        June.append(Months)
+    elif "July" in Months:
+        July.append(Months)
+    elif "August" in Months:
+        August.append(Months)
+    elif "September" in Months:
+        September.append(Months)
+    elif "October" in Months:
+        October.append(Months)
+    elif "November" in Months:
+        November.append(Months)
+    elif "December" in Months:
+        December.append(Months)
+
+
+# shows the dates mentioned in the website in each month
+print(January)
+print(February)
+print(March)
+print(April)
+print(May)
+print(June)
+print(July)
+print(August)
+print(September)
+print(October)
+print(November)
+print(December)
